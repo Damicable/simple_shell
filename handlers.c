@@ -4,7 +4,7 @@ void sig_handler(int sig);
 int execute(char **args, char **front);
 
 /**
- * sig_handler - This prints a new prompt upon a signal.
+ * sig_handler - This function prints a new prompt upon a signal.
  * @sig: Signal.
  */
 
@@ -18,9 +18,9 @@ void sig_handler(int sig)
 }
 
 /**
- * execute - This executes a command in a child process.
+ * execute - This function executes a command in a child process.
  * @args: An array of arguments passed.
- * @front: A double pointer to the beginning of args.
+ * @front: Double pointer to the beginning of args.
  *
  * Return: The corresponding error code, if an error occur otherwise,
  * exit the value of last executed command.

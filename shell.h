@@ -93,6 +93,10 @@ void free_env(void);
 
 int token_len(char *str, char *delim);
 int count_tokens(char *str, char *delim);
+alias_t *add_alias_end(alias_t **head, char *name, char *value);
+void free_alias_list(alias_t *head);
+list_t *add_node_end(list_t **head, char *dir);
+void free_list(list_t *head);
 
 
 /** Main Helpers **/
@@ -107,10 +111,18 @@ void free_list(list_t *head);
 char *_itoa(int num);
 int num_len(int num);
 void assign_lineptr(char **lineptr, size_t *n, char *buffer, size_t b);
-
-int shellby_setenv(char **args, char __attribute__((__unused__)) **front);
-int shellby_env(char **args, char __attribute__((__unused__)) **front);
-int shellby_unsetenv(char **args, char __attribute__((__unused__)) **front);
+char *get_pid(void);
+char *get_env_value(char *beginning, int len);
+void variable_replacement(char **args, int *exe_ret);
+char *get_args(char *line, int *exe_ret);
+int call_args(char **args, char **front, int *exe_ret);
+int run_args(char **args, char **front, int *exe_ret);
+int handle_args(int *exe_ret);
+int check_args(char **args);
+void free_args(char **args, char **front);
+void handle_line(char **line, ssize_t read);
+ssize_t get_new_len(char *line);
+void logical_ops(char *line, ssize_t *new_len);
 
 /** Handled Error **/
 
@@ -135,10 +147,15 @@ int shellby_exit(char **args, char **front);
 int shellby_env(char **args, char __attribute__((__unused__)) **front);
 int shellby_setenv(char **args, char __attribute__((__unused__)) **front);
 int shellby_unsetenv(char **args, char __attribute__((__unused__)) **front);
+ 
+/** Handlers **/
+
+void sig_handler(int sig);
+int execute(char **args, char **front);
 
 void help_env(void);
 void help_setenv(void);
 void help_unsetenv(void);
 void help_history(void);
-
+ 
 #endif
