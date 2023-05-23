@@ -80,7 +80,7 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 int _strspn(char *s, char *accept);
 int _strcmp(char *s1, char *s2);
 
-int cant_open(char *file_path)
+int cant_open(char *file_path);
 int proc_file_commands(char *file_path, int *exe_ret);
 
 /** Builtin Helpers **/
@@ -122,5 +122,23 @@ char *error_2_exit(char **args);
 char *error_2_syntax(char **args);
 char *error_126(char **args);
 char *error_127(char **args);
+
+/** Builtins.c **/
+
+int shellby_alias(char **args, char __attribute__((__unused__)) **front);
+void set_alias(char *var_name, char *value);
+void print_alias(alias_t *alias);
+int (*get_builtin(char *command))(char **args, char **front);
+int shellby_cd(char **args, char __attribute__((__unused__)) **front);
+int shellby_help(char **args, char __attribute__((__unused__)) **front);
+int shellby_exit(char **args, char **front);
+int shellby_env(char **args, char __attribute__((__unused__)) **front);
+int shellby_setenv(char **args, char __attribute__((__unused__)) **front);
+int shellby_unsetenv(char **args, char __attribute__((__unused__)) **front);
+
+oid help_env(void);
+void help_setenv(void);
+void help_unsetenv(void);
+void help_history(void);
 
 #endif
