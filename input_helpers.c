@@ -1,19 +1,13 @@
 #include "shell.h"
 
-char *get_args(char *line, int *exe_ret);
-int call_args(char **args, char **front, int *exe_ret);
-int run_args(char **args, char **front, int *exe_ret);
-int handle_args(int *exe_ret);
-int check_args(char **args);
-
 /**
- * get_args - Gets a command from standard input.
+ * get_args - This is a function that gets a command from standard input.
  * @line: A buffer to store the command.
- * @exe_ret: The return value of the last executed command.
+ * @exe_ret: The return value of last executed command.
  *
- * Return: If an error occurs - NULL.
- *         Otherwise - a pointer to the stored command.
+ * Return: NULL if an error occurs, Otherwise - pointer to the stored command.
  */
+
 char *get_args(char *line, int *exe_ret)
 {
 	size_t n = 0;
@@ -42,13 +36,14 @@ char *get_args(char *line, int *exe_ret)
 }
 
 /**
- * call_args - Partitions operators from commands and calls them.
+ * call_args - This function seperates operators from commands and calls them.
  * @args: An array of arguments.
- * @front: A double pointer to the beginning of args.
+ * @front: Double pointer to the beginning of args.
  * @exe_ret: The return value of the parent process' last executed command.
  *
- * Return: The return value of the last executed command.
+ * Return: Last executed command retured value
  */
+
 int call_args(char **args, char **front, int *exe_ret)
 {
 	int ret, index;
@@ -100,16 +95,17 @@ int call_args(char **args, char **front, int *exe_ret)
 }
 
 /**
- * run_args - Calls the execution of a command.
+ * run_args - This functions calls the execution of a command.
  * @args: An array of arguments.
- * @front: A double pointer to the beginning of args.
+ * @front: Double pointer to the beginning of argument.
  * @exe_ret: The return value of the parent process' last executed command.
  *
- * Return: The return value of the last executed command.
+ * Return: Last executed command's returned value.
  */
+
 int run_args(char **args, char **front, int *exe_ret)
 {
-	int ret, i;
+	int ret, k;
 	int (*builtin)(char **args, char **front);
 
 	builtin = get_builtin(args[0]);
@@ -128,20 +124,20 @@ int run_args(char **args, char **front, int *exe_ret)
 
 	hist++;
 
-	for (i = 0; args[i]; i++)
-		free(args[i]);
+	for (k = 0; args[k]; k++)
+		free(args[k]);
 
 	return (ret);
 }
 
 /**
- * handle_args - Gets, calls, and runs the execution of a command.
+ * handle_args - This function gets, calls, and runs the execution of a command.
  * @exe_ret: The return value of the parent process' last executed command.
  *
- * Return: If an end-of-file is read - END_OF_FILE (-2).
- *         If the input cannot be tokenized - -1.
- *         O/w - The exit value of the last executed command.
+ * Return: -2 if an end-of-file is read - END_OF_FILE. -1 if input can't be
+ *tokenized,Otherwise - last executed command value.
  */
+
 int handle_args(int *exe_ret)
 {
 	int ret = 0, index;
@@ -182,27 +178,28 @@ int handle_args(int *exe_ret)
 }
 
 /**
- * check_args - Checks if there are any leading ';', ';;', '&&', or '||'.
- * @args: 2D pointer to tokenized commands and arguments.
+ * check_args - This function checks if there are any leading ';', ';;', '&&', or '||'.
+ * @args: 2D pointer to the tokenized commands and arguments.
  *
- * Return: If a ';', '&&', or '||' is placed at an invalid position - 2.
- *	   Otherwise - 0.
+ * Return: -2, if a ';', '&&', or '||' is placed at an invalid position,
+ * Otherwise - 0.
  */
+
 int check_args(char **args)
 {
-	size_t i;
-	char *cur, *nex;
+	size_t k;
+	char *current, *next;
 
-	for (i = 0; args[i]; i++)
+	for (k = 0; args[k]; k++)
 	{
-		cur = args[i];
-		if (cur[0] == ';' || cur[0] == '&' || cur[0] == '|')
+		current = args[k];
+		if (current[0] == ';' || current[0] == '&' || current[0] == '|')
 		{
-			if (i == 0 || cur[1] == ';')
-				return (create_error(&args[i], 2));
-			nex = args[i + 1];
-			if (nex && (nex[0] == ';' || nex[0] == '&' || nex[0] == '|'))
-				return (create_error(&args[i + 1], 2));
+			if (k == 0 || current[1] == ';')
+				return (create_error(&args[k], 2));
+			next = args[k + 1];
+			if (next && (next[0] == ';' || next[0] == '&' || next[0] == '|'))
+				return (create_error(&args[k + 1], 2));
 		}
 	}
 	return (0);
