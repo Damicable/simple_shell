@@ -136,7 +136,7 @@ int shellby_env(char **args, char __attribute__((__unused__)) **front);
 int shellby_setenv(char **args, char __attribute__((__unused__)) **front);
 int shellby_unsetenv(char **args, char __attribute__((__unused__)) **front);
 
-oid help_env(void);
+void help_env(void);
 void help_setenv(void);
 void help_unsetenv(void);
 void help_history(void);
