@@ -65,7 +65,7 @@ void help_history(void)
 	while (current)
 	{
 		write(STDOUT_FILENO, " ", 1);
-		write(STDOUT_FILENO, _uitoa(k), _strlen(_uitoa(k)));
+		write(STDOUT_FILENO, _itoa(k), _strlen(_itoa(k)));
 		write(STDOUT_FILENO, "  ", 2);
 		write(STDOUT_FILENO, current->cmd, _strlen(current->cmd));
 		write(STDOUT_FILENO, "\n", 1);

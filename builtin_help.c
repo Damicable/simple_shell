@@ -175,7 +175,7 @@ int shellby_exit(char **args, char **front)
 		}
 		for (; args[0][k]; k++)
 		{
-			if (k <= int && args[0][k] >= '0' && args[0][k] <= '9')
+			if (k <= int_len && args[0][k] >= '0' && args[0][k] <= '9')
 				sum = (sum * 10) + (args[0][k] - '0');
 			else
 				return (create_error(--args, 2));
