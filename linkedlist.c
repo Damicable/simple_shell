@@ -1,7 +1,8 @@
 #include "shell.h"
 
 /**
- * add_alias_end - This function adds a node to the end of an alias_t linked list.
+ * add_alias_end - This function adds a node to the end of an alias_t linked
+ * list.
  * @head: Pointer to the head of the list_t list.
  * @name Name of the new alias to be added.
  * @value: Value of the new alias to be added.
@@ -41,7 +42,8 @@ alias_t *add_alias_end(alias_t **head, char *name, char *value)
 }
 
 /**
- * add_node_end -This function  adds new node to the end of a list_t linked list.
+ * add_node_end - This function adds new node to the end of a list_t linked
+ * list.
  * @head: Pointer to the head of the list_t list.
  * @dir: The directory path for the new node to contain.
  *

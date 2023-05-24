@@ -1,5 +1,8 @@
 #include "shell.h"
 
+char *error_126(char **args);
+char *error_127(char **args);
+
 /**
  * error_126 - This is function that creates an error message
  * for permission denied failures.

@@ -1,5 +1,9 @@
 #include "shell.h"
 
+char **_copyenv(void);
+void free_env(void);
+char **_getenv(const char *var);
+
 /**
  * _copyenv - A function that creates a copy of the environment.
  *
@@ -39,6 +43,18 @@ char **_copyenv(void)
 }
 
 /**
+ * free_env - This function frees the the environment copy.
+ */
+void free_env(void)
+{
+	int index;
+
+	for (index = 0; environ[index]; index++)
+		free(environ[index]);
+	free(environ);
+}
+
+/**
  * _getenv - This function gets an environmental variable from the PATH.
  * @var: The name of the environmental variable to get.
  *
@@ -58,17 +74,4 @@ char **_getenv(const char *var)
 	}
 
 	return (NULL);
-}
-
-/**
- * free_env - A function that frees the environment copy.
- */
-
-void free_env(void)
-{
-	int index;
-
-	for (index = 0; environ[index]; index++)
-		free(environ[index]);
-	free(environ);
 }

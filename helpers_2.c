@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * handle_line - This function partitions a line read from standard input as needed.
+ * handle_line - This function partitions a line read from standard input as
+ * needed.
  * @line: The pointer to a line read from standard input.
  * @read: Line length
  *
  * Description: Spaces are inserted to separate ";", "||", and "&&".
  *              Replaces "#" with '\0'.
  */
-
 void handle_line(char **line, ssize_t read)
 {
 	char *old_line, *new_line;

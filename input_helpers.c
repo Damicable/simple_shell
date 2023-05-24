@@ -131,7 +131,8 @@ int run_args(char **args, char **front, int *exe_ret)
 }
 
 /**
- * handle_args - This function gets, calls, and runs the execution of a command.
+ * handle_args - This function gets, calls, and runs the execution of a
+ * command.
  * @exe_ret: The return value of the parent process' last executed command.
  *
  * Return: -2 if an end-of-file is read - END_OF_FILE. -1 if input can't be
@@ -178,7 +179,8 @@ int handle_args(int *exe_ret)
 }
 
 /**
- * check_args - This function checks if there are any leading ';', ';;', '&&', or '||'.
+ * check_args - This function checks if there are any
+ * leading ';', ';;', '&&', or '||'.
  * @args: 2D pointer to the tokenized commands and arguments.
  *
  * Return: -2, if a ';', '&&', or '||' is placed at an invalid position,

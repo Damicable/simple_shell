@@ -38,7 +38,8 @@ char *get_pid(void)
 }
 
 /**
- * get_env_value - This is a function that gets the value corresponding to an environmental variable.
+ * get_env_value - This is a function that gets the value corresponding
+ * to an environmental variable.
  * @beginning: An environmental variable to search for.
  * @len: Length of the environmental variable to search for.
  *
@@ -78,13 +79,11 @@ char *get_env_value(char *beginning, int len)
 /**
  * variable_replacement - this is use to handle variable replacement.
  * @line: Double pointer containing the command and arguments.
- * @exe_ret: Pointer to the return value of the last executed command.
- *
- * Description:  This replaces $$ with the current PID, $? with the return value
+ * @exe_ret: Pointer to the return value of the last executed command
+ * Description: This replaces $$ with current PID, $? with the return value
  * of the last executed program, and envrionmental variables
  * preceded by $ and their corresponding value.
  */
-
 void variable_replacement(char **line, int *exe_ret)
 {
 	int k, l = 0, len;
@@ -146,6 +145,7 @@ void variable_replacement(char **line, int *exe_ret)
 void free_args(char **args, char **front)
 {
 	size_t k;
+
 	for (k = 0; args[k] || args[k + 1]; k++)
 		free(args[k]);
 

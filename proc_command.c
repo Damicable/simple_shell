@@ -45,12 +45,11 @@ int cant_open(char *file_path)
  * @exe_ret: Last executed command value returned.
  *
  * Return: 127 if file can not be opened, -1 if malloc fails,
- * Otherwise the return value of the last command ran.
+ * Otherwise the read value of last command ran.
  */
-
 int proc_file_commands(char *file_path, int *exe_ret)
 {
-	ssize_t file, o_read, k;
+	ssize_t file, b_read, k;
 	unsigned int line_size = 0;
 	unsigned int old_size = 120;
 	char *line, **args, **front;
@@ -68,15 +67,15 @@ int proc_file_commands(char *file_path, int *exe_ret)
 	if (!line)
 		return (-1);
 	do {
-		o_read = read(file, buffer, 119);
-		if (o_read == 0 && line_size == 0)
+		b_read = read(file, buffer, 119);
+		if (b_read == 0 && line_size == 0)
 			return (*exe_ret);
-		buffer[o_read] = '\0';
-		line_size += o_read;
+		buffer[b_read] = '\0';
+		line_size += b_read;
 		line = _realloc(line, old_size, line_size);
 		_strcat(line, buffer);
 		old_size = line_size;
-	} while (o_read);
+	} while (b_read);
 	for (k = 0; line[k] == '\n'; k++)
 		line[k] = ' ';
 	for (; k < line_size; k++)
@@ -101,6 +100,7 @@ int proc_file_commands(char *file_path, int *exe_ret)
 		return (*exe_ret);
 	}
 	front = args;
+
 	for (k = 0; args[k]; k++)
 	{
 		if (_strncmp(args[k], ";", 1) == 0)
@@ -112,7 +112,9 @@ int proc_file_commands(char *file_path, int *exe_ret)
 			k = 0;
 		}
 	}
+
 	ret = call_args(args, front, exe_ret);
+
 	free(front);
 	return (ret);
 }

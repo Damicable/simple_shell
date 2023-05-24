@@ -1,5 +1,37 @@
 #include "shell.h"
 
+int shellby_env(char **args, char __attribute__((__unused__)) **front);
+int shellby_setenv(char **args, char __attribute__((__unused__)) **front);
+int shellby_unsetenv(char **args, char __attribute__((__unused__)) **front);
+
+/**
+ * shellby_env - This function prints the current environment.
+ * @args: An array of arguments passed to the shell.
+ * @front: Double pointer to the beginning of args.
+ *
+ * Return: If an error occurs - -1, Otherwise - 0.
+ *
+ * Description: This prints one variable per line in the
+ *              format 'variable'='value'.
+ */
+int shellby_env(char **args, char __attribute__((__unused__)) **front)
+{
+	int index;
+	char nc = '\n';
+
+	if (!environ)
+		return (-1);
+
+	for (index = 0; environ[index]; index++)
+	{
+		write(STDOUT_FILENO, environ[index], _strlen(environ[index]));
+		write(STDOUT_FILENO, &nc, 1);
+	}
+
+	(void)args;
+	return (0);
+}
+
 /**
  * shellby_setenv - This functin changes or adds an environmental variable
  * to the PATH.
@@ -55,34 +87,6 @@ int shellby_setenv(char **args, char __attribute__((__unused__)) **front)
 	return (0);
 }
 
-/**
- * shellby_env - This function prints the original environment.
- * @args: An array of arguments passed to the shell.
- * @front: Double pointer to the beginning of args.
- *
- * Return: -1 If an error occurs, otherwise 0
- *
- * Description: It prints one variable per line in the format
- * 'variable'='value'
- */
-
-int shellby_env(char **args, char __attribute__((__unused__)) **front)
-{
-	int index;
-	char env = '\n';
-
-	if (!environ)
-		return (-1);
-
-	for (index = 0; environ[index]; index++)
-	{
-		write(STDOUT_FILENO, environ[index], _strlen(environ[index]));
-		write(STDOUT_FILENO, &env, 1);
-	}
-
-	(void)args;
-	return (0);
-}
 
 
 /**

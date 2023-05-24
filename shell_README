@@ -1,4 +1,31 @@
-PROJECT DESCRIPTION:
+PROJECT DESCRIPTION: May 2023, "Alx-Holberton School" "0x16.C - Simple_shell
+
+Shell.h : This header file contains function prototypes, structure definition, macros and constants used through out this project. This serves as an interface for the source files to access shared declarations, promoting modality and code organization.
+
+Shell.c: This is the main entry point of the shell.This file initializes necessary variables, sets up the environment, displays a prompt and handles the main loop for
+reading and executing a command.
+
+split_token.c: This file deals with parsing the user input into individual commands and their arguments. It contains function tht splits the input string into tokens.  It also handles special characters and organized the parsed data for further processing.
+
+getline.c: This file handles reading a line of input from the user and storing it in a buffer. It also contains functions that performs neccessory operations like input validation or memory allocation.
+
+helper.c: This contains utility functions that are used throughout the coding. it includes commonly functions like string manipulation and  memory management.
+
+linkedlist.c: This file implements a linked list data structure. It includs functions to create, modify and traverse linked list.
+
+str_func.c and str_funs1c: These are files containing string manipulation functions
+
+environ_builtins.c: This file implements functions related o managing environment variables. It contains builtin commands specifically related to environment variables.
+
+builtin_help.c: This files handles the impementation of built-in commands. It includes functions that execute built-in commands like cd, exit and other commands specified in this project requrements.
+
+alias_builtin.c: This file contains functions to handle alias- related operations. It includes functions to create, retrieve or resolve aliases specified by the user.
+
+proc_command.c: This file handles communication with the procfs(process file system) in unix-like systems.
+
+search.c: This file contains functions to locateexecutables in the systems path variable. It include functions to search for executables in the directories specified by the path variable and verify their existance or accessibility.
+
+errors.: These files contains error handling functions such as printing error messages or terminating a program gracefully.
 
 shellby\fR \- simple UNIX command interpreter
 
@@ -100,4 +127,8 @@ unsetenv: Removes an environmental variable.
 access(2), chdir(2), execve(2), _exit(2), exit(3), fflush(3), fork(2), free(3), isatty(3), getcwd(3), malloc(3), open(2), read(2), sh(1), signal(2), stat(2), wait(2), write(2)
 
 .B Shellby\fR emulates basic functionality of the \fBsh\fR shell.
-This man page emulates from the corresponding man pages sh(1) and dash(1).
+This shell_README emulates from the corresponding man pages sh(1) and dash(1).
+
+authors: CHIKA Ann Obidiegwu <annobidiegwu@gmail.com>
+
+Sayed ATEF Mohamed <sayedatef6293@gmail.com>

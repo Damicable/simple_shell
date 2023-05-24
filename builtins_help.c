@@ -1,5 +1,10 @@
 #include "shell.h"
 
+void help_env(void);
+void help_setenv(void);
+void help_unsetenv(void);
+void help_history(void);
+
 /**
  * help_env - This displays information about the shellby builtin
  * command 'env'.
@@ -42,4 +47,29 @@ void help_unsetenv(void)
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "message to stderr.\n";
 	write(STDOUT_FILENO, msg, _strlen(msg));
+}
+
+/**
+ * help_history - This function displays the history list, one command by
+ * line, preceded with line numbers; printf is not allowed.
+ * use this prototype: void help_history(void);
+ * Return: 0
+ */
+
+void help_history(void)
+{
+	int k = 0;
+	history_t *current = NULL;
+	
+	current = get_history();
+	while (current)
+	{
+		write(STDOUT_FILENO, " ", 1);
+		write(STDOUT_FILENO, _uitoa(k), _strlen(_uitoa(k)));
+		write(STDOUT_FILENO, "  ", 2);
+		write(STDOUT_FILENO, current->cmd, _strlen(current->cmd));
+		write(STDOUT_FILENO, "\n", 1);
+		current = current->next;
+		k++;
+	}
 }

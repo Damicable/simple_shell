@@ -1,5 +1,10 @@
 #include "shell.h"
 
+int (*get_builtin(char *command))(char **args, char **front);
+int shellby_exit(char **args, char **front);
+int shellby_cd(char **args, char __attribute__((__unused__)) **front);
+int shellby_help(char **args, char __attribute__((__unused__)) **front);
+
 /**
  * get_builtin - This program matches a command with a corresponding
  * shellby builtin function.
@@ -153,7 +158,7 @@ int shellby_help(char **args, char __attribute__((__unused__)) **front)
  * Return: -3 if no arguments, -2 if the given exit value is invalid
  * otherwise - exits with the given status value.
  *
- * Description: After returning -3, the program exits back in the main function.
+ * Description: After returning -3, the program exits back in the main function
  */
 
 int shellby_exit(char **args, char **front)
