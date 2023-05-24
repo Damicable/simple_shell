@@ -1,5 +1,5 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef _SHELL_H_
+#define _SHELL_H_
 
 #include <fcntl.h>
 #include <stdio.h>
@@ -10,6 +10,7 @@
 #include <signal.h>
 #include <unistd.h>
 #include <errno.h>
+#include <string.h>
 
 #define END_OF_FILE -2
 #define EXIT -3
