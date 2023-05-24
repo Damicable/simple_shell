@@ -5,6 +5,34 @@ int token_len(char *str, char *delim);
 int count_tokens(char *str, char *delim);
 
 /**
+ * count_tokens - A function that counts the number of delimite
+ * characters contained within a string.
+ * @str: The string to search.
+ * @delim: The delimiter characters to be counted.
+ *
+ * Return: The string token.
+ */
+int count_tokens(char *str, char *delim)
+{
+	int index, tokens = 0, len = 0;
+
+	for (index = 0; *(str + index); index++)
+		len++;
+
+	for (index = 0; index < len; index++)
+	{
+		if (*(str + index) != *delim)
+		{
+			tokens++;
+			index += token_len(str + index, delim);
+		}
+	}
+
+	return (tokens);
+}
+
+
+/**
  * _strtok - This is a function that tokenizes a string.
  * @line: The string that is to be tokenized.
  * @delim: The delimiter char to be used to tokenize the string.
@@ -72,34 +100,6 @@ int token_len(char *str, char *delim)
 	{
 		len++;
 		index++;
-
-	return (len);
-}
-
-/**
- * count_tokens - A function that counts the number of delimite
- * characters contained within a string.
- * @str: The string to search.
- * @delim: The delimiter characters to be counted.
- *
- * Return: The string token.
- */
-
-int count_tokens(char *str, char *delim)
-{
-	int index, tokens = 0, len = 0;
-
-	for (index = 0; *(str + index); index++)
-		len++;
-
-	for (index = 0; index < len; index++)
-	{
-		if (*(str + index) != *delim)
-		{
-			tokens++;
-			index += token_len(str + index, delim);
-		}
 	}
-
-	return (tokens);
+	return (len);
 }
