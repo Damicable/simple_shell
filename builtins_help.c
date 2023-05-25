@@ -48,28 +48,3 @@ void help_unsetenv(void)
 	msg = "message to stderr.\n";
 	write(STDOUT_FILENO, msg, _strlen(msg));
 }
-
-/**
- * help_history - This function displays the history list, one command by
- * line, preceded with line numbers; printf is not allowed.
- * use this prototype: void help_history(void);
- * Return: 0
- */
-
-void help_history(void)
-{
-	int k = 0;
-	history_t *current = NULL;
-	
-	current = get_history();
-	while (current)
-	{
-		write(STDOUT_FILENO, " ", 1);
-		write(STDOUT_FILENO, _itoa(k), _strlen(_itoa(k)));
-		write(STDOUT_FILENO, "  ", 2);
-		write(STDOUT_FILENO, current->cmd, _strlen(current->cmd));
-		write(STDOUT_FILENO, "\n", 1);
-		current = current->next;
-		k++;
-	}
-}
